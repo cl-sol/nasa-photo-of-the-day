@@ -1,9 +1,20 @@
 import React, {useState, useEffect} from "react";
 import "../App";
 import {Collapse, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button} from "reactstrap";
+import styled from "styled-components";
 
 import axios from "axios";
 
+const ImageTitle = styled.h1`
+    color: #5959FF;
+`;
+
+const ImageDescription = styled.p`
+    padding: 0 250px;
+    color: #131380;
+`;
+
+// const imageDescription = 
 
 function Photos(){
     const [photo, setPhoto] = useState([]);
@@ -27,14 +38,13 @@ function Photos(){
             <Card>
                 <CardImg width= "50%" src= {photo.hdurl} alt = "NASA Pic of the Day" />
                 <CardBody>
-                    <CardTitle>{photo.title}</CardTitle>
+                    <ImageTitle>{photo.title}</ImageTitle>
                     <CardSubtitle>{photo.date}</CardSubtitle>
                     <Button color="primary" onClick={toggle} style={{marginBottom: "1rem"}}>Learn More</Button>
                     <Collapse isOpen= {isOpen}>
                         <Card>
                             <CardBody>
-                                Test
-                                {/* <CardText>Test</CardText> */}
+                                <ImageDescription>{photo.explanation}</ImageDescription>
                             </CardBody>
                         </Card>
                     </Collapse>
